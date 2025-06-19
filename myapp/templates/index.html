@@ -1,0 +1,880 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Procols</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+
+      background-color: #000;
+      color: #fff;
+      overflow-x: hidden;
+
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      box-sizing: border-box;
+    }
+
+    .navbar-logo img {
+      height: 30px;
+    }
+
+    .navbar-links {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .navbar-links a {
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 4px;
+      font-size: 16px;
+    }
+
+    .navbar-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background-color: #a765ff;
+      transition: width 0.3s;
+    }
+
+    .navbar-links a:hover::after,
+    .navbar-links a.active::after {
+      width: 100%;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 25px;
+      height: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      position: relative;
+      z-index: 1100;
+    }
+
+    .hamburger span {
+      height: 3px;
+      width: 100%;
+      background-color: #a765ff;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 100px 50px 50px;
+      position: relative;
+      z-index: 1;
+      box-sizing: border-box;
+    }
+
+    #vanta-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 0;
+    }
+
+    .hero-section h1,
+    .hero-section p,
+    .btn-get-started {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-section h1 {
+      font-size: 3em;
+      max-width: 700px;
+      margin-bottom: 20px;
+    }
+
+    .hero-section p {
+      font-size: 1.2em;
+      max-width: 600px;
+      margin-bottom: 30px;
+      color: #ccc;
+    }
+
+    .btn-get-started {
+      padding: 12px 25px;
+      background-color: #a765ff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .btn-get-started:hover {
+      background-color: #8a3eff;
+    }
+
+
+
+    /* Service section */
+/* Base Section */
+.service-section {
+  padding: 50px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Heading */
+.service-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+/* Intro Text */
+.intro-text {
+  margin-top: 10px;
+  font-size: 1.6rem;
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+/* Grid Layout */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+/* Card Style */
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #000000;
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(108, 37, 155, 0.34);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 25px rgba(40, 15, 66, 0.367);
+}
+
+/* Card Borders (Glow Animation) */
+.card span {
+  position: absolute;
+  display: block;
+}
+.card span:nth-child(1) {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #531973);
+  animation: animate1 2s linear infinite;
+}
+.card span:nth-child(2) {
+  top: 0;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #531973);
+  animation: animate2 2s linear infinite;
+  animation-delay: 0.5s;
+}
+.card span:nth-child(3) {
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent,#531973);
+  animation: animate3 2s linear infinite;
+}
+.card span:nth-child(4) {
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #531973);
+  animation: animate4 2s linear infinite;
+  animation-delay: 0.5s;
+}
+
+/* Animations */
+@keyframes animate1 {
+  0% { left: -100%; }
+  50%, 100% { left: 100%; }
+}
+@keyframes animate2 {
+  0% { top: -100%; }
+  50%, 100% { top: 100%; }
+}
+@keyframes animate3 {
+  0% { right: -100%; }
+  50%, 100% { right: 100%; }
+}
+@keyframes animate4 {
+  0% { bottom: -100%; }
+  50%, 100% { bottom: 100%; }
+}
+
+/* Inside Card Content */
+.card svg.check {
+  color: #531973;
+  width: 32px;
+  height: 32px;
+  margin-bottom: 10px;
+}
+
+.card strong {
+  display: block;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #ccc;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.card hr {
+  border: none;
+  border-top: 1px solid #333;
+  margin: 20px 0;
+}
+
+.card button {
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  border: 1px solid #531973;
+  color: #531973;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card button:hover {
+  background-color: #531973;
+  color: #000000;
+}
+
+.card svg.arrow {
+  margin-left: 8px;
+  font-size: 0.9rem;
+}
+
+/* ✅ Mobile Responsive Fix */
+@media (max-width: 768px) {
+  .service-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .intro-text {
+    font-size: 1rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr; /* stack cards vertically */
+    padding: 0;
+    gap: 20px;
+  }
+
+  .card { 
+    margin-bottom: 50px;
+    width: 90%;
+    max-width: 88%;
+    margin: 20px -1;
+    padding: 1.5rem;
+    border-radius: 15px;
+  }
+
+  .card button {
+    width: 45%;
+    justify-content: center;
+  }
+
+  .card p,
+  .card strong {
+    text-align: center;
+  }
+
+  .card svg.check {
+    margin: 0 auto 10px auto;
+    display: block;
+  }
+}
+
+
+
+
+/* Feedback Section */
+
+.custom-feedback-section {
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .custom-feedback-section h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .custom-feedback-section p.intro {
+      font-size: 2rem;
+      color: #ffffff;
+      
+      margin-bottom: 40px;
+    }
+
+    .custom-card-container {
+      margin-bottom: 20px;
+      margin-left: 40px;
+      width: 70%;
+      
+    }
+
+    .custom-card {
+      width: 90%;
+      background-color: #000000;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 2px 10px rgba(112, 38, 144, 0.24);
+      border: 2px solid rgba(38, 6, 66, 0.698);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      margin-bottom: 35px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transform: translateX(100px);
+    }
+
+    .custom-card .custom-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: linear-gradient(90deg, #0e05157d 0%, #210937 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .custom-card .custom-icon svg {
+      width: 40px;
+      height: 40px;
+      fill: rgba(255, 255, 255, 0.178);
+    }
+
+    .custom-card .custom-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .custom-card .custom-text {
+      font-size: 0.9rem;
+      text-align: center;
+      color: #ccc;
+    }
+
+    .custom-card.custom-animate-left {
+      animation: custom-slideLeft 0.8s ease forwards;
+    }
+
+    .custom-card.custom-animate-right {
+      animation: custom-slideRight 0.8s ease forwards;
+    }
+
+    @keyframes custom-slideLeft {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes custom-slideRight {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .custom-card {
+        transform: translateX(50px);
+      }
+    }
+
+
+
+
+
+
+    .site-footer {
+      background-color: #111;
+      color: #aaa;
+      text-align: center;
+      padding: 30px 50px;
+    }
+
+    .footer-links ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 0;
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: #aaa;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: #a765ff;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 15px 20px;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .navbar-links {
+        position: absolute;
+        top: 65px;
+        right: 20px;
+        background-color: #1c0c2bcc;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        width: 200px;
+        padding: 20px;
+        border-radius: 8px;
+        display: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        transform: translateY(-10px);
+        opacity: 0;
+      }
+
+      .navbar-links.open {
+        display: flex;
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .navbar-links a {
+        width: 100%;
+        padding: 10px 0;
+        font-size: 18px;
+        border-bottom: 1px solid #a765ff55;
+        text-align: left;
+      }
+
+      .navbar-links a:last-child {
+        border-bottom: none;
+      }
+
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      .hero-section {
+        padding: 30px 20px ;
+        text-align: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .hero-section h1 {
+        font-size: 2.2em;
+        max-width: 90%;
+      }
+
+      .hero-section p {
+        font-size: 1em;
+        max-width: 90%;
+      }
+
+      .content-section {
+        padding: 60px 20px;
+      }
+
+      .content-section h2 {
+        font-size: 2em;
+      }
+
+      .content-section p {
+        font-size: 1em;
+      }
+
+      .site-footer {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar-logo img {
+        height: 25px;
+      }
+
+      .hero-section h1 {
+        font-size: 1.8em;
+      }
+
+      .hero-section p {
+        font-size: 0.9em;
+      }
+
+      .btn-get-started {
+        padding: 10px 20px;
+        font-size: 0.9em;
+      }
+
+      .content-section h2 {
+        font-size: 1.8em;
+      }
+
+      .content-section p {
+        font-size: 0.9em;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .navbar {
+        padding: 25px 50px;
+      }
+
+      .navbar-links a {
+        font-size: 18px;
+      }
+
+      .hero-section {
+        padding: 130px 50px 50px;
+      }
+
+      #vanta-bg {
+        height: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-logo">
+      <img src="{% static 'img/logo.png' %}" alt="Procols Logo" />
+    </div>
+
+    <button class="hamburger" id="hamburgerBtn" aria-label="Toggle Menu" type="button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="navbar-links" id="navbarNav">
+      <a href="#" class="nav-item active">Home</a>
+      <a href="#" class="nav-item">Services</a>
+      <a href="#" class="nav-item">Projects</a>
+      <a href="#" class="nav-item">Contact</a>
+    </div>
+  </nav>
+
+  <section class="hero-section">
+    <div id="vanta-bg"></div>
+    <h1>Bringing Innovation to Life</h1>
+    <p>Live real-time IT projects delivered with real-world expertise. Partner with us to innovate.</p>
+    <a href="#" class="btn-get-started">Get Started</a>
+  </section>
+
+
+  <section class="service-section">
+    <p class="intro-text">At Procols, we bring real-time industry experience to the forefront of IT development. As a pioneering force in technology, we specialize in delivering live, real-world projects across various domains.</p>
+    <p class="intro-text">We are your trusted technology partner.</p>
+  
+    <div class="services-grid">
+      <!-- Web Development -->
+      <div class="card">
+        <span></span><span></span><span></span><span></span>
+        <div>
+          <svg class="check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path fill="currentColor" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/>
+          </svg>
+          <strong>Web Development</strong>
+          <p>Elevate your online presence with PROCOLS For Tech. Our artistic team creates effective websites offering speed, responsiveness, and exceptional user experiences.</p>
+          <hr>
+          <button>
+            Read More
+            <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path fill="currentColor" d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+  
+      <!-- SEO -->
+      <div class="card">
+        <span></span><span></span><span></span><span></span>
+        <div>
+          <svg class="check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path fill="currentColor" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/>
+          </svg>
+          <strong>SEO</strong>
+          <p>Dominate SERPs with Quest for Tech's expert SEO. Boost UX, organic traffic, and rankings. Let data-backed strategies elevate your brand.</p>
+          <hr>
+          <button>
+            Read More
+            <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path fill="currentColor" d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+  
+      <!-- Web App Development -->
+      <div class="card">
+        <span></span><span></span><span></span><span></span>
+        <div>
+          <svg class="check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path fill="currentColor" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/>
+          </svg>
+          <strong>Web App Development</strong>
+          <p>We build mobile applications tailored for Android, iOS, or cross-platform using tools like Flutter, React Native, or Swift.</p>
+          <hr>
+          <button>
+            Read More
+            <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path fill="currentColor" d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+  
+      <!-- Digital Marketing -->
+      <div class="card">
+        <span></span><span></span><span></span><span></span>
+        <div>
+          <svg class="check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path fill="currentColor" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/>
+          </svg>
+          <strong>Digital Marketing</strong>
+          <p>We go beyond basic marketing. We build digital-first brands through strategic content and data-driven campaigns to attract and retain customers.</p>
+          <hr>
+          <button>
+            Read More
+            <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path fill="currentColor" d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="custom-feedback-section">
+    
+    <p class="intro">Laser-Focused Transparent Customisation</p>
+
+    <div class="custom-card-container">
+      <div class="custom-card">
+        <div class="custom-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.701 471.701">
+            <path d="M433.6 67c-24.7-24.7-57.4-38.2-92.3-38.2s-67.7 13.6-92.4 38.3L236 80.1l-13.1-13.1c-24.7-24.7-57.6-38.4-92.5-38.4-34.8 0-67.6 13.6-92.2 38.2C13.5 91.5 0 124.3 0 159.2c0 34.9 13.7 67.6 38.4 92.3l187.8 187.8c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-3.9L433.6 251.6c24.7-24.7 38.3-57.5 38.3-92.4 0-34.9-13.5-67.7-38.3-92.2z"/>
+          </svg>
+        </div>
+        <p class="custom-title">Tech & AI</p>
+        <p class="custom-text">Cutting-Edge Tech and AI Know-How</p>
+      </div>
+
+      <div class="custom-card">
+        <div class="custom-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.701 471.701">
+            <path d="M433.6 67c-24.7-24.7-57.4-38.2-92.3-38.2s-67.7 13.6-92.4 38.3L236 80.1l-13.1-13.1c-24.7-24.7-57.6-38.4-92.5-38.4-34.8 0-67.6 13.6-92.2 38.2C13.5 91.5 0 124.3 0 159.2c0 34.9 13.7 67.6 38.4 92.3l187.8 187.8c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-3.9L433.6 251.6c24.7-24.7 38.3-57.5 38.3-92.4 0-34.9-13.5-67.7-38.3-92.2z"/>
+          </svg>
+        </div>
+        <p class="custom-title">Strategies</p>
+        <p class="custom-text">Clear, Relevant, and Measurable Strategies</p>
+      </div>
+
+      <div class="custom-card">
+        <div class="custom-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.701 471.701">
+            <path d="M433.6 67c-24.7-24.7-57.4-38.2-92.3-38.2s-67.7 13.6-92.4 38.3L236 80.1l-13.1-13.1c-24.7-24.7-57.6-38.4-92.5-38.4-34.8 0-67.6 13.6-92.2 38.2C13.5 91.5 0 124.3 0 159.2c0 34.9 13.7 67.6 38.4 92.3l187.8 187.8c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-3.9L433.6 251.6c24.7-24.7 38.3-57.5 38.3-92.4 0-34.9-13.5-67.7-38.3-92.2z"/>
+          </svg>
+        </div>
+        <p class="custom-title">ROI Plans</p>
+        <p class="custom-text">ROI-Driven Digital Marketing Plans</p>
+      </div>
+
+      <div class="custom-card">
+        <div class="custom-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.701 471.701">
+            <path d="M433.6 67c-24.7-24.7-57.4-38.2-92.3-38.2s-67.7 13.6-92.4 38.3L236 80.1l-13.1-13.1c-24.7-24.7-57.6-38.4-92.5-38.4-34.8 0-67.6 13.6-92.2 38.2C13.5 91.5 0 124.3 0 159.2c0 34.9 13.7 67.6 38.4 92.3l187.8 187.8c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-3.9L433.6 251.6c24.7-24.7 38.3-57.5 38.3-92.4 0-34.9-13.5-67.7-38.3-92.2z"/>
+          </svg>
+        </div>
+        <p class="custom-title">Ethical</p>
+        <p class="custom-text">Human-led, Ethical Marketing Outlook</p>
+      </div>
+
+      <div class="custom-card">
+        <div class="custom-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.701 471.701">
+            <path d="M433.6 67c-24.7-24.7-57.4-38.2-92.3-38.2s-67.7 13.6-92.4 38.3L236 80.1l-13.1-13.1c-24.7-24.7-57.6-38.4-92.5-38.4-34.8 0-67.6 13.6-92.2 38.2C13.5 91.5 0 124.3 0 159.2c0 34.9 13.7 67.6 38.4 92.3l187.8 187.8c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-3.9L433.6 251.6c24.7-24.7 38.3-57.5 38.3-92.4 0-34.9-13.5-67.7-38.3-92.2z"/>
+          </svg>
+        </div>
+        <p class="custom-title">Adaptability</p>
+        <p class="custom-text">Swift Adaptability to Change</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const customCards = document.querySelectorAll('.custom-card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const index = Array.from(customCards).indexOf(entry.target);
+          entry.target.classList.add(index % 2 === 0 ? 'custom-animate-left' : 'custom-animate-right');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    customCards.forEach(card => observer.observe(card));
+  </script>
+
+  
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        entry.target.classList.toggle('visible', entry.isIntersecting);
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    document.querySelectorAll('.card').forEach(card => {
+      observer.observe(card);
+    });
+  </script>
+
+  
+  
+  
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <ul>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Support</a></li>
+      </ul>
+    </div>
+    <p>&copy; 2025 Procols. All Rights Reserved.</p>
+  </footer>
+
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/vanta@0.5.21/dist/vanta.net.min.js"></script>
+  <script defer>
+    document.addEventListener("DOMContentLoaded", function () {
+      VANTA.NET({
+        el: "#vanta-bg",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        color: 0x67268c,
+        backgroundColor: 0x000000,
+        points: 17,
+        maxDistance: 20,
+        spacing: 15
+      });
+
+      const hamburgerBtn = document.getElementById("hamburgerBtn");
+      const navbarNav = document.getElementById("navbarNav");
+
+      hamburgerBtn.addEventListener("click", () => {
+        navbarNav.classList.toggle("open");
+        hamburgerBtn.classList.toggle("open");
+      });
+
+      document.querySelectorAll(".navbar-links a").forEach(link => {
+        link.addEventListener("click", () => {
+          navbarNav.classList.remove("open");
+          hamburgerBtn.classList.remove("open");
+        });
+      });
+
+      document.addEventListener('click', (event) => {
+        const isClickInside = navbarNav.contains(event.target) || hamburgerBtn.contains(event.target);
+        if (!isClickInside && navbarNav.classList.contains('open')) {
+          navbarNav.classList.remove('open');
+          hamburgerBtn.classList.remove('open');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
