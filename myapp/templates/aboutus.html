@@ -8,7 +8,7 @@
     <title>Procols</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/aboutus.css' %}">
 </head>
 <body>
 
@@ -23,22 +23,23 @@
             <div class="collapse navbar-collapse" id="procolsNavbar"> {# Changed ID for clarity #}
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> {# Used ms-auto to push items to the right #}
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+                        <a class="nav-link" aria-current="page" href="{% url 'index' %}">Home</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Services
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark"> {# Added dropdown-menu-dark for consistent theme #}
-                          <li><a class="dropdown-item" href="{% url 'service' %}">Web Development</a></li>
-                            <li><a class="dropdown-item" href="{% url 'seo' %}">SEO</a></li>
-                            <li><a class="dropdown-item" href="{% url 'webapp' %}">Web App Development</a></li>
-                            <li><a class="dropdown-item" href="{% url 'digitalmarketing' %}">Digital Marketing</a></li>
-                        </ul>
+                            <li><a class="dropdown-item" href="{% url 'service' %}">Web Development</a></li>
+                              <li><a class="dropdown-item" href="{% url 'seo' %}">SEO</a></li>
+                              <li><a class="dropdown-item" href="{% url 'webapp' %}">Web App Development</a></li>
+                              <li><a class="dropdown-item" href="{% url 'digitalmarketing' %}">Digital Marketing</a></li>
+                          </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'aboutus' %}">About Us</a> {# Added About Us #}
+                        <a class="nav-link active" href="{% url 'aboutus' %}">About Us</a> {# Added About Us #}
                     </li>
+                
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'contactus' %}">Contact</a> {# Changed Pricing to Contact #}
                     </li>
@@ -49,17 +50,84 @@
 
 
 
-    <section class="hero-section">
-        <div id="vanta-bg"></div>
-        <h1>Bringing Innovation to Life</h1>
-        <p>Live real-time IT projects delivered with real-world expertise. Partner with us to innovate.</p>
-        <a href="#" class="btn-get-started">Get Started</a>
+    <section class="hero-section min-h-screen flex flex-col md:flex-row items-center md:items-start justify-center md:justify-between px-4 py-8 relative overflow-hidden">
+
+        <div class="hero-content flex flex-col items-center md:items-start text-center md:text-left w-full md:w-1/2 lg:w-2/5 mb-8 md:mb-0 md:pr-8 z-10">
+            <h1 class="font-bold">About Us</h1>
+            <p class="leading-relaxed max-w-xl">At Procols, we’re not just another name in the IT landscape — we’re a powerhouse of innovation, learning, and real-world impact.</p>
+            <a href="#" class="btn-get-started">Get Started</a>
+        </div>
+
+        <div id="vanta" class="w-full md:w-1/2 lg:w-3/5 flex justify-center items-center relative z-10">
+            <div class="cube-inner">
+                <div class="cube">
+                    <div style="--x:-1; --y:0;">
+                        <span style="--i:3;"></span>
+                        <span style="--i:2;"></span>
+                        <span style="--i:1;"></span>
+                    </div>
+                    <div style="--x:0; --y:0;">
+                        <span style="--i:3;"></span>
+                        <span style="--i:2;"></span>
+                        <span style="--i:1;"></span>
+                    </div>
+                    <div style="--x:1; --y:0;">
+                        <span style="--i:3;"></span>
+                        <span style="--i:2;"></span>
+                        <span style="--i:1;"></span>
+                    </div>
+                </div>
+                <div class="cube">
+                    <div style="--x:-1; --y:0;">
+                        <span style="--i:3;"></span>
+                        <span style="--i:2;"></span>
+                        <span style="--i:1;"></span>
+                    </div>
+                    <div style="--x:0; --y:0;">
+                        <span style="--i:3;"></span>
+                        <span style="--i:2;"></span>
+                        <span style="--i:1;"></span>
+                    </div>
+                    <div style="--x:1; --y:0;">
+                        <span style="--i:3;"></span>
+                        <span style="--i:2;"></span>
+                        <span style="--i:1;"></span>
+                    </div>
+                </div>
+                <div class="cube">
+                    <div style="--x:-1; --y:0;">
+                        <span style="--i:3;"></span>
+                        <span style="--i:2;"></span>
+                        <span style="--i:1;"></span>
+                    </div>
+                    <div style="--x:0; --y:0;">
+                        <span style="--i:3;"></span>
+                        <span style="--i:2;"></span>
+                        <span style="--i:1;"></span>
+                    </div>
+                    <div style="--x:1; --y:0;">
+                        <span style="--i:3;"></span>
+                        <span style="--i:2;"></span>
+                        <span style="--i:1;"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </section>
 
     <section class="service-section">
-        <p class="intro-text">At Procols, we bring real-time industry experience to the forefront of IT development. As a pioneering force in technology, we specialize in delivering live, real-world projects across various domains.</p>
-        <p class="intro-text">We are your trusted technology partner.</p>
-
+        <main class="containers mx-auto px-4 py-8">
+            <h2 class="intro-heading">Driving Innovation in IT</h2>
+            <p class="intro-content">We work at the heart of the tech revolution, executing real-time industry projects that span across domains like software development, web and mobile applications, cloud technologies, cybersecurity, AI/ML, and data analytics. Our team is built of passionate developers, analysts, and architects who believe in creating solutions that work — not just on paper, but in production.</p>
+    
+            <h2 class="intro-heading mt-8">Bridging the Gap Between Academia & Industry</h2>
+            <p class="intro-content">We understand the challenges final-year students face when converting ideas into functional, scalable solutions. That’s why we guide students every step of the way — from concept to code to completion. Our proven project support model ensures that each student gains hands-on development experience while building impactful academic projects aligned with industry expectations.</p>
+    
+            <h2 class="intro-heading mt-8">Domain-Specific IT Training</h2>
+            <p class="intro-content">Learning is never one-size-fits-all. Our domain-focused courses are curated to equip learners with skills that the IT industry truly demands. Whether it's Full Stack Development, Python with Django, DevOps & Cloud, or Data Science, our programs combine theory with live project exposure, giving students and graduates the confidence to thrive in the real world.</p>
+        </main>
+    
         <div class="services-grid">
             <div class="card">
                 <div class="pyramid-loader color1">
@@ -68,10 +136,10 @@
                         <span class="shadow"></span>
                     </div>
                 </div>
-                <strong>Web Development</strong>
-                <p>We create lightning-fast, responsive websites with rich UX.</p>
+              
+                <p>Real-Time IT Project Experience</p>
                 <hr>
-                <button>Read More</button>
+                
             </div>
 
             <div class="card">
@@ -81,10 +149,10 @@
                         <span class="shadow"></span>
                     </div>
                 </div>
-                <strong>SEO</strong>
-                <p>Data-backed strategies to elevate your brand rankings.</p>
+              
+                <p>Personalized Final-Year Project Support</p>
                 <hr>
-                <button>Read More</button>
+               
             </div>
 
             <div class="card">
@@ -94,10 +162,10 @@
                         <span class="shadow"></span>
                     </div>
                 </div>
-                <strong>Web App Development</strong>
-                <p>Cross-platform mobile apps with Flutter, React Native, etc.</p>
+                
+                <p>Hands-On Learning with Industry Tools & Tech</p>
                 <hr>
-                <button>Read More</button>
+               
             </div>
 
             <div class="card">
@@ -107,53 +175,36 @@
                         <span class="shadow"></span>
                     </div>
                 </div>
-                <strong>Digital Marketing</strong>
-                <p>We build digital-first brands through strategy & content.</p>
+                
+                <p>Career-Oriented Training by Expert Mentors</p>
                 <hr>
-                <button>Read More</button>
+                
+            </div>
+
+
+            <div class="card">
+                <div class="pyramid-loader color4">
+                    <div class="wrapper">
+                        <span class="side"></span><span class="side"></span><span class="side"></span><span class="side"></span>
+                        <span class="shadow"></span>
+                    </div>
+                </div>
+                
+                <p>End-to-End Documentation & Review Support</p>
+                <hr>
+                
             </div>
         </div>
     </section>
 
-    <section class="custom-feedback-section">
-        <p class="intro">The Procols For Tech Experience
-            Laser-Focused Transparent Customisation </p>
-
-        <div class="custom-card-container">
-            <div class="custom-card scroll-left">
-                <p class="custom-title">Tech & AI</p>
-                <p class="custom-text">Cutting-Edge Tech and AI Know-How</p>
-            </div>
-            <div class="custom-card scroll-right">
-                <p class="custom-title">Strategies</p>
-                <p class="custom-text">Clear, Relevant, and Measurable Strategies</p>
-            </div>
-            <div class="custom-card scroll-left">
-                <p class="custom-title">ROI Plans</p>
-                <p class="custom-text">ROI-Driven Digital Marketing Plans</p>
-            </div>
-            <div class="custom-card scroll-right">
-                <p class="custom-title">Ethical</p>
-                <p class="custom-text">Human-led, Ethical Marketing Outlook</p>
-            </div>
-            <div class="custom-card scroll-left">
-                <p class="custom-title">Adaptability</p>
-                <p class="custom-text">Swift Adaptability to Change</p>
-            </div>
-            <div class="custom-card scroll-right">
-                <p class="custom-title">Performance</p>
-                <p class="custom-text">Maximized Performance Outcomes</p>
-            </div>
-        </div>
-    </section>
 
     <section class="talk-section">
         <p class="talk-text">
-            Let’s Grab a Virtual Coffee and discuss how Procols can help you manifest your business’s vision board
+            Procols, we don’t just prepare you for a job — we prepare you for a career in IT that evolves with technology.
         </p>
 
         <button class="button">
-            <span class="text">Let's Talk</span>
+            <span class="text">Connect To Us</span>
             <span class="svg">
                 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="20" viewBox="0 0 38 15" fill="none">
                     <path fill="white"

@@ -1,0 +1,301 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="{% static 'img/icon.png' %}" type="image/x-icon">
+    <title>Procols</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/digitalmarketing.css' %}">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <img src="{% static 'img/icon.png' %}" alt="Procols Logo" />
+        </div>
+
+        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false" type="button">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="navbar-links" id="navbarNav">
+            <a href="{% url 'index' %}" class="nav-item active">Home</a>
+            <div class="dropdown" id="dropdownMenu">
+                <a href="#" class="nav-item" id="servicesBtn" aria-haspopup="true" aria-expanded="false">Services</a>
+                <div class="dropdown-content" id="servicesDropdown">
+                    <ul class="dropdown-menu dropdown-menu-dark"> {# Added dropdown-menu-dark for consistent theme #}
+                        <li><a class="dropdown-item" href="{% url 'service' %}">Web Development</a></li>
+                          <li><a class="dropdown-item" href="{% url 'seo' %}">SEO</a></li>
+                          <li><a class="dropdown-item" href="{% url 'webapp' %}">Web App Development</a></li>
+                          <li><a class="dropdown-item" href="{% url 'digitalmarketing' %}">Digital Marketing</a></li>
+                      </ul>
+                </div>
+            </div>
+            <a href="{% url 'aboutus' %}" class="nav-item">About Us</a>
+            <a href="{% url 'contactus' %}" class="nav-item">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div id="vanta-bg"></div>
+        <h1>Digital Marketing and Content Creating </h1>
+        <p>In today’s digital ecosystem, it’s not just about being online — it’s about being unforgettable. At Quest For Tech, we go beyond basic marketing. We build digital-first brands through strategic content and data-driven marketing campaigns designed to attract, convert, and retain your ideal customers.</p>
+        <a href="#" class="btn-get-started">Let's Build</a>
+    </section>
+
+
+    <section class="service-section">
+        <p class="section-intro-text">Digital Marketing & Content Creation Services</p>
+        <p class="section-intro-text">Empowering Brands with Words, Strategy, and Impact</p>
+    
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="cube-loader color1">
+                    <div class="wrapper">
+                        <span class="face"></span>
+                        <span class="face"></span>
+                        <span class="face"></span>
+                        <span class="face"></span>
+                        <span class="face"></span>
+                        <span class="face"></span>
+                    </div>
+                </div>
+                <strong>SEO-Optimized Content Writing</strong>
+                <p>We create compelling blogs, website copy, product descriptions, and whitepapers that are keyword-rich and tailored to your audience. Every piece is aligned with Google’s latest standards and crafted by writers experienced in your niche.</p>
+                <hr>
+            </div>
+    
+            <div class="service-card">
+                <div class="cube-loader color2">
+                    <div class="wrapper">
+                        <span class="face"></span>
+                        <span class="face"></span>
+                        <span class="face"></span>
+                        <span class="face"></span>
+                        <span class="face"></span>
+                        <span class="face"></span>
+                    </div>
+                </div>
+                <strong>Social Media Content & Marketing</strong>
+                <p>We design platform-specific content for Instagram, LinkedIn, Facebook, and Twitter, including creative captions, hashtag strategies, and Reels scripts. Our focus is on building engagement, visibility, and a loyal community around your brand.</p>
+                <hr>
+            </div>
+    
+            <div class="service-card">
+                <div class="cube-loader color3">
+                    <div class="wrapper">
+                        <span class="face"></span>
+                        <span class="face"></span>
+                        <span class="face"></span>
+                        <span class="face"></span>
+                        <span class="face"></span>
+                        <span class="face"></span>
+                    </div>
+                </div>
+                <strong>Search Engine Optimization (SEO)</strong>
+                <p>Our SEO services cover on-page audits, backlink strategies, and technical improvements like meta tags and schema markups. We aim to increase your online visibility, attract more traffic, and ultimately drive more business.</p>
+                <hr>
+            </div>
+    
+            <div class="service-card">
+                <div class="cube-loader color4">
+                    <div class="wrapper">
+                        <span class="face"></span>
+                        <span class="face"></span>
+                        <span class="face"></span>
+                        <span class="face"></span>
+                        <span class="face"></span>
+                        <span class="face"></span>
+                    </div>
+                </div>
+                <strong>Paid Advertising (PPC)</strong>
+                <p>We manage Google and Meta Ads campaigns across Search, Display, Shopping, Facebook, and Instagram. Our strategies are data-driven, with a focus on fast lead generation and performance-based results.</p>
+                <hr>
+            </div>
+    
+            <div class="service-card">
+                <div class="cube-loader color5">
+                    <div class="wrapper">
+                        <span class="face"></span>
+                        <span class="face"></span>
+                        <span class="face"></span>
+                        <span class="face"></span>
+                        <span class="face"></span>
+                        <span class="face"></span>
+                    </div>
+                </div>
+                <strong>Email Marketing & Automation</strong>
+                <p>From lead magnets to automated email sequences, we help you connect directly with your customers. Our services include campaign design, welcome and sales funnels, and analytics for continuous improvement.</p>
+                <hr>
+            </div>
+    
+            <div class="service-card">
+                <div class="cube-loader color6">
+                    <div class="wrapper">
+                        <span class="face"></span>
+                        <span class="face"></span>
+                        <span class="face"></span>
+                        <span class="face"></span>
+                        <span class="face"></span>
+                        <span class="face"></span>
+                    </div>
+                </div>
+                <strong>Brand Strategy & Content Planning</strong>
+                <p>We help you build a consistent and intentional brand with audience research, tone-of-voice development, and detailed monthly content calendars that guide your entire communication strategy.</p>
+                <hr>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="custom-feedback-section">
+        <p class="intro">Industries We Serve</p>
+        <div class="custom-card-container">
+            <div class="custom-card scroll-left">
+                <p class="custom-title"> Startups</p>
+                </div>
+            <div class="custom-card scroll-right">
+                <p class="custom-title">eCommerce & D2C</p>
+                </div>
+            <div class="custom-card scroll-left">
+                <p class="custom-title">Health & Wellness</p>
+                </div>
+                <div class="custom-card scroll-left">
+                    <p class="custom-title">Tech & SaaS</p>
+                    </div>
+                <div class="custom-card scroll-right">
+                    <p class="custom-title">Real Estate</p>
+                    </div>
+                <div class="custom-card scroll-left">
+                    <p class="custom-title">Education & EdTech</p>
+                    </div>
+        </div>
+    </section>
+
+
+    <section class="talk-section">
+        <p class="talk-text">
+            Unleash Your Website’s Potential & Reel in Your Dream Customers?
+            Empowering Your Brand, One Click at a Time.
+        </p>
+
+        <button class="button">
+            <span class="text">Free Consultation</span>
+            <span class="svg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="20" viewBox="0 0 38 15" fill="none">
+                    <path fill="white"
+                        d="M10 7.519l-.939-.344h0l.939.344zm14.386-1.205l-.981-.192.981.192zm1.276 5.509l.537.843.148-.094.107-.139-.792-.611zm4.819-4.304l-.385-.923h0l.385.923zm7.227.707a1 1 0 0 0 0-1.414L31.343.448a1 1 0 0 0-1.414 0 1 1 0 0 0 0 1.414l5.657 5.657-5.657 5.657a1 1 0 0 0 1.414 1.414l6.364-6.364zM1 7.519l.554.833.029-.019.094-.061.361-.23 1.277-.77c1.054-.609 2.397-1.32 3.629-1.787.617-.234 1.17-.392 1.623-.455.477-.066.707-.008.788.034.025.013.031.021.039.034a.56.56 0 0 1 .058.235c.029.327-.047.906-.39 1.842l1.878.689c.383-1.044.571-1.949.505-2.705-.072-.815-.45-1.493-1.16-1.865-.627-.329-1.358-.332-1.993-.244-.659.092-1.367.305-2.056.566-1.381.523-2.833 1.297-3.921 1.925l-1.341.808-.385.245-.104.068-.028.018c-.011.007-.011.007.543.84zm8.061-.344c-.198.54-.328 1.038-.36 1.484-.032.441.024.94.325 1.364.319.45.786.64 1.21.697.403.054.824-.001 1.21-.09.775-.179 1.694-.566 2.633-1.014l3.023-1.554c2.115-1.122 4.107-2.168 5.476-2.524.329-.086.573-.117.742-.115s.195.038.161.014c-.15-.105.085-.139-.076.685l1.963.384c.192-.98.152-2.083-.74-2.707-.405-.283-.868-.37-1.28-.376s-.849.069-1.274.179c-1.65.43-3.888 1.621-5.909 2.693l-2.948 1.517c-.92.439-1.673.743-2.221.87-.276.064-.429.065-.492.057-.043-.006.066.003.155.127.07.099.024.131.038-.063.014-.187.078-.49.243-.94l-1.878-.689zm14.343-1.053c-.361 1.844-.474 3.185-.413 4.161.059.95.294 1.72.811 2.215.567.544 1.242.546 1.664.459a2.34 2.34 0 0 0 .502-.167l.15-.076.049-.028.018-.011c.013-.008.013-.008-.524-.852l-.536-.844.019-.012c-.038.018-.064.027-.084.032-.037.008.053-.013.125.056.021.02-.151-.135-.198-.895-.046-.734.034-1.887.38-3.652l-1.963-.384zm2.257 5.701l.791.611.024-.031.08-.101.311-.377 1.093-1.213c.922-.954 2.005-1.894 2.904-2.27l-.771-1.846c-1.31.547-2.637 1.758-3.572 2.725l-1.184 1.314-.341.414-.093.117-.025.032c-.01.013-.01.013.781.624zm5.204-3.381c.989-.413 1.791-.42 2.697-.307.871.108 2.083.385 3.437.385v-2c-1.197 0-2.041-.226-3.19-.369-1.114-.139-2.297-.146-3.715.447l.771 1.846z" />
+                </svg>
+            </span>
+        </button>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-links">
+            <ul>
+                <li><a href="#">Terms</a></li>
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Support</a></li>
+            </ul>
+        </div>
+        <p>&copy; 2025 Procols. All Rights Reserved.</p>
+    </footer>
+
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/vanta@0.5.21/dist/vanta.net.min.js"></script>
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function () {
+            VANTA.NET({
+                el: "#vanta-bg",
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                color: 0x67268c,
+                backgroundColor: 0x000000,
+                points: 17,
+                maxDistance: 20,
+                spacing: 15
+            });
+
+            const hamburgerBtn = document.getElementById("hamburgerBtn");
+            const navbarNav = document.getElementById("navbarNav");
+            const servicesBtn = document.getElementById("servicesBtn");
+            const servicesDropdown = document.getElementById("servicesDropdown");
+
+            // Toggle main navigation menu
+            hamburgerBtn.addEventListener("click", () => {
+                const isExpanded = hamburgerBtn.getAttribute('aria-expanded') === 'true';
+                hamburgerBtn.setAttribute('aria-expanded', !isExpanded);
+                navbarNav.classList.toggle("open");
+                hamburgerBtn.classList.toggle("open");
+                // Close services dropdown if open when main menu is toggled
+                if (servicesDropdown.classList.contains('open')) {
+                    servicesDropdown.classList.remove('open');
+                    servicesBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Toggle services dropdown submenu
+            servicesBtn.addEventListener("click", (event) => {
+                event.preventDefault(); // Prevent default link behavior
+                const isExpanded = servicesBtn.getAttribute('aria-expanded') === 'true';
+                servicesBtn.setAttribute('aria-expanded', !isExpanded);
+                servicesDropdown.classList.toggle("open");
+            });
+
+            // Close main menu and services dropdown when a nav item is clicked
+            document.querySelectorAll(".navbar-links a:not(.nav-item[id='servicesBtn'])").forEach(link => {
+                link.addEventListener("click", () => {
+                    navbarNav.classList.remove("open");
+                    hamburgerBtn.classList.remove("open");
+                    hamburgerBtn.setAttribute('aria-expanded', 'false');
+                    if (servicesDropdown.classList.contains('open')) {
+                        servicesDropdown.classList.remove('open');
+                        servicesBtn.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            });
+
+            // Close main menu and services dropdown when clicking outside
+            document.addEventListener('click', (event) => {
+                const isClickInsideNavbar = navbarNav.contains(event.target) || hamburgerBtn.contains(event.target);
+                const isClickInsideServicesDropdown = servicesBtn.contains(event.target) || servicesDropdown.contains(event.target);
+
+                if (!isClickInsideNavbar && navbarNav.classList.contains('open')) {
+                    navbarNav.classList.remove('open');
+                    hamburgerBtn.classList.remove('open');
+                    hamburgerBtn.setAttribute('aria-expanded', 'false');
+                }
+                
+                if (!isClickInsideServicesDropdown && servicesDropdown.classList.contains('open')) {
+                    servicesDropdown.classList.remove('open');
+                    servicesBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Intersection Observer for feedback cards
+            const cards = document.querySelectorAll('.custom-card');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('scroll-animate');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.2
+            });
+
+            cards.forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
