@@ -14,7 +14,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{% url 'index' %}">
                 <img src="{% static 'img/icon.png' %}" alt="Procols Logo" height="40">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#procolsNavbar" aria-controls="procolsNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,23 +23,25 @@
             <div class="collapse navbar-collapse" id="procolsNavbar">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{% url 'index' %}">Home</a>
+                        <a class="nav-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}" aria-current="page" href="{% url 'index' %}">Home</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Services
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-dark"> {# Added dropdown-menu-dark for consistent theme #}
+                        <ul class="dropdown-menu dropdown-menu-dark">
                             <li><a class="dropdown-item" href="{% url 'service' %}">Web Development</a></li>
-                              <li><a class="dropdown-item" href="{% url 'seo' %}">SEO</a></li>
-                              <li><a class="dropdown-item" href="{% url 'webapp' %}">Web App Development</a></li>
-                              <li><a class="dropdown-item" href="{% url 'digitalmarketing' %}">Digital Marketing</a></li>
-                          </ul>
+                            <li><a class="dropdown-item" href="{% url 'seo' %}">SEO</a></li>
+                            <li><a class="dropdown-item" href="{% url 'webapp' %}">Web App Development</a></li>
+                            <li><a class="dropdown-item" href="{% url 'digitalmarketing' %}">Digital Marketing</a></li>
+                            {# Add a divider or "All Services" link if needed #}
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'aboutus' %}">About Us</a>
                     </li>
-                  
+                    {# Assuming 'feedback' URL exists, uncomment if needed #}
+                   
                     <li class="nav-item">
                         <a class="nav-link active" href="{% url 'contactus' %}">Contact</a>
                     </li>
@@ -48,21 +50,51 @@
         </div>
     </nav>
 
-    <section class="hero-section">
-        <div id="vanta-bg"></div>
+    <section class="hero-video-section">
+        <video autoplay loop muted playsinline id="background-video">
+            <source src="{% static 'img/Dr._Strange_Shield_VFX_-_After_Effects(1080p).mp4' %}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="video-overlay"></div>
 
-        <div class="form-container">
-            <form class="form">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="text" id="email" name="email" required="">
+        <div class="container px-4 py-5 text-center text-lg-start my-5 content-overlay">
+            <div class="row gx-lg-5 align-items-center mb-5">
+                <div class="col-lg-6 mb-5 mb-lg-0 text-white" style="z-index: 10">
+                    <h1 class="my-5 display-5 fw-bold ls-tight">
+                        Welcome To Procols <br />
+                    </h1>
+                    <p class="mb-4 opacity-70">
+                        Fulfilling Your Needs Is Our Service
+                    </p>
                 </div>
-                <div class="form-group">
-                    <label for="textarea">How Can We Help You?</label>
-                    <textarea name="textarea" id="textarea" rows="10" cols="50" required=""></textarea>
+
+                <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+                    <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+                    <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+
+                    <div class="card bg-glass">
+                        <div class="card-body px-4 py-5 px-md-5">
+                            <form method="POST" action="{% url 'contactinfo' %}">
+                                {% csrf_token %}
+
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="formUsername">Enter Your Email</label>
+                                    <input type="text" id="formUsername" name="email" class="form-control" required />
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <label for="details" class="form-label">How Can We Help You?</label>
+                                    <textarea id="details" name="details" rows="6" placeholder="Type your message here..." class="form-control" required></textarea>
+                                </div>
+
+                                <button type="submit" class="btn btn-danger btn-block mb-4">
+                                    Submit
+                                </button><br>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <button class="form-submit-btn" type="submit">Submit</button>
-            </form>
+            </div>
         </div>
     </section>
 
@@ -79,22 +111,10 @@
 
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/vanta@0.5.21/dist/vanta.net.min.js"></script>
-    <script defer>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Vanta.js background initialization
-            VANTA.NET({
-                el: "#vanta-bg",
-                mouseControls: true,
-                touchControls: true,
-                gyroControls: false,
-                color: 0xaaaaaa,        // Lighter gray for the lines
-                backgroundColor: 0x000000, // Background color of the Vanta animation
-                points: 17,
-                maxDistance: 20,
-                spacing: 15
-            });
 
-            // Scroll animation for custom-cards (cleaner implementation)
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Your custom card scroll animation logic (if still in use)
             const cards = document.querySelectorAll('.custom-card');
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
@@ -109,8 +129,23 @@
             cards.forEach(card => {
                 observer.observe(card);
             });
+
+            // If you uncommented Vanta.js, add its initialization here.
+            // Example:
+            // VANTA.NET({
+            //     el: "#vanta-bg", // Make sure an element with this ID exists where you want Vanta
+            //     mouseControls: true,
+            //     touchControls: true,
+            //     gyroControls: false,
+            //     color: 0xaaaaaa,
+            //     backgroundColor: 0x000000,
+            //     points: 17,
+            //     maxDistance: 20,
+            //     spacing: 15
+            // });
         });
     </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </body>
