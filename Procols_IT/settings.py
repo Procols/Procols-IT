@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-weav#er4w67kq+$h$ua$i8*!2y+zj5rr_387xy9!nu2@o1cq(m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
